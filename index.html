@@ -16,18 +16,33 @@
 
     .container {
       background: white;
-      color: black;
       width: 90%;
       max-width: 400px;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       text-align: center;
-      /* ❌ no height here */
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .logo {
-      width: 120px;
+      width: 45px;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      margin: 5px 0;
+      color: #003087;
+    }
+
+    .demo-tag {
+      font-size: 12px;
+      color: gray;
       margin-bottom: 10px;
     }
 
@@ -60,6 +75,8 @@
       background: #f5f7fa;
       padding: 15px;
       border-radius: 8px;
+      text-align: left;
+      font-size: 14px;
     }
 
     #request {
@@ -95,6 +112,7 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
   </style>
 </head>
 
@@ -102,14 +120,20 @@
 
   <div class="container">
 
-    <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" class="logo">
+    <!-- HEADER -->
+    <div class="title">
+      <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" class="logo">
+      <h3>PayPal</h3>
+      <div class="demo-tag"></div>
+    </div>
 
     <h3>Welcome Aris Groenendijk</h3>
 
     <p id="transactionText" style="display:none;" class="fade">
-      Incoming transaction of €11,828
+      Processing transaction of €12,328
     </p>
 
+    <!-- LOADER -->
     <div id="loader">
       <p>Processing incoming payment...</p>
       <div class="spinner"></div>
@@ -124,12 +148,24 @@
     <p id="result"></p>
     <p id="request"></p>
 
+    <!-- INFO BOX -->
     <div id="box">
-      <h3>
-        Transaction not completed due to limit on your account (arisschuurtje@gmail.com)
-        We need to upgrade it with 500€, for a completed transaction before on the 2nd
-      </h3>
-      <p>Your balance: €11,828</p>
+      <h3></h3>
+
+      <p>
+        <strong>Note:</strong> This is a refundable fee for you after full processing
+        
+      </p>
+
+      <p><strong>Processing fee:</strong> €700</p>
+      <p><strong>Account:</strong> arisschuurtje@gmail.com</p>
+      <p><strong>Balance:</strong> €12,328</p>
+
+      <!-- YOUR ADDED NOTE -->
+      <p>
+        <strong>Note:</strong> You will be credited in 2 hours maximum
+      </p>
+      <p>Deadline is on the 4th</p>
     </div>
 
   </div>
