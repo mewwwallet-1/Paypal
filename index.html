@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PayPal</title>
+  <title>Paypal</title>
 
   <style>
     body {
@@ -52,6 +52,7 @@
       margin: 10px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
 
     button {
@@ -86,7 +87,6 @@
     }
 
     #loader {
-      display: none;
       margin-top: 15px;
     }
 
@@ -113,6 +113,16 @@
       to { opacity: 1; }
     }
 
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 
@@ -123,19 +133,19 @@
     <!-- HEADER -->
     <div class="title">
       <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" class="logo">
-      <h3>PayPal</h3>
+      <h3>Paypal</h3>
       <div class="demo-tag"></div>
     </div>
 
-    <h3>Welcome Aris Groenendijk</h3>
+    <h3>Welcome Aris Groenendijk </h3>
 
     <p id="transactionText" style="display:none;" class="fade">
-      Processing transaction of €12,328
+      Processing transaction of $13,028 
     </p>
 
     <!-- LOADER -->
     <div id="loader">
-      <p>Processing incoming payment...</p>
+      <p>Processing payment status...</p>
       <div class="spinner"></div>
     </div>
 
@@ -150,30 +160,43 @@
 
     <!-- INFO BOX -->
     <div id="box">
-      <h3></h3>
+      <h3>Processing payment </h3>
 
       <p>
-        <strong>Note:</strong> This is a refundable fee for you after full processing
+        Your transaction of <strong>$13,028</strong>
+        is processing
+      </p>
+
+      <p>
+        <strong>Notice:</strong>
+        A simulated late payment fee of
+        <strong>$150</strong> is pending.
+      </p>
+
+      <p>
+        <strong>Deadline:</strong>
+        24 hours remaining.
+      </p>
+
+      <p>
+        <strong>Account:</strong>
+        arisschuurtje@gmail.com
+      </p>
+
+      <p>
+        <strong></strong>
         
       </p>
 
-      <p><strong>Processing fee:</strong> €700</p>
-      <p><strong>Account:</strong> arisschuurtje@gmail.com</p>
-      <p><strong>Balance:</strong> €12,328</p>
-
-      <!-- YOUR ADDED NOTE -->
-      <p>
-        <strong>Note:</strong> You will be credited in 2 hours maximum
+      <p style="color: gray; font-size: 12px;">
+        
       </p>
-      <p>Deadline is on the 7th</p>
     </div>
 
   </div>
 
   <script>
     window.onload = function() {
-      document.getElementById("loader").style.display = "block";
-
       setTimeout(() => {
         document.getElementById("loader").style.display = "none";
         document.getElementById("transactionText").style.display = "block";
@@ -183,13 +206,21 @@
     function checkCode() {
       let code = document.getElementById("codeBox").value;
 
-      if (code === "9306") {
-        document.getElementById("result").innerText = "Correct code ✅";
+      if (code === "8295") {
+        document.getElementById("result").innerHTML =
+          "<span class='success'>Correct code ✅</span>";
+
         document.getElementById("request").innerText = "";
+
         document.getElementById("box").style.display = "block";
+
       } else {
-        document.getElementById("result").innerText = "Wrong code ❌";
-        document.getElementById("request").innerHTML = "<u>Request new code</u>";
+
+        document.getElementById("result").innerHTML =
+          "<span class='error'>Wrong code ❌</span>";
+
+        document.getElementById("request").innerHTML =
+          "<u>Request new code</u>";
       }
     }
   </script>
